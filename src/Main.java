@@ -1,7 +1,13 @@
 import java.util.Scanner;
 
-public class Main {//testing our class
+/**
+ * testing our class
+ */
+public class Main {
     public static void main(String[] args) {
+        /**
+         * length of generated Lucas number sequence
+         */
         int N;
         if(args.length!=0){//input from cmd
             N=Integer.parseInt(args[0]);
@@ -19,11 +25,17 @@ public class Main {//testing our class
             sequence[i]=new LucasNumber(i, sequence);
         }
         System.out.println("Sequence of "+N+" values has been generated");
-
-        int resultNum=0;//amount of Lucas numbers, that meet our condition
+/**
+ * amount of Lucas numbers, that meet our condition
+ */
+        int resultNum=0;
         for (LucasNumber num: sequence) {
             if(num.doesMeetCondition()) resultNum++;
         }
-        System.out.println(resultNum+" from first "+N+" numbers of Lucas sequence equal w^2+1");
+        if(resultNum!=0){
+            System.out.println(resultNum+" from first "+N+" numbers of Lucas sequence equal w^2+1");
+        }else {
+            System.out.println("No first "+N+" Lucas number meet the condition");
+        }
     }
 }

@@ -1,12 +1,29 @@
-import static java.lang.Math.pow;
+import static java.lang.Math.*;
 
+/**
+ * instance of Lucas number
+ */
 public class LucasNumber {
-    private int id;//id of current sequence element
-    private int value;//value of the element
+    /**
+     * id of current sequence element
+     */
+    private int id;
+    /**
+     * value of the element
+     */
+    private int value;
 
-    public LucasNumber() {}//default explicit constructor
+    /**
+     * default explicit constructor
+     */
+    public LucasNumber() {}
 
-    public LucasNumber(int id, LucasNumber [] sequence) {//constructor with parameters
+    /**
+     *constructor with parameters
+     * @param id id of Lucas number
+     * @param sequence reference to a sequence of Lucas numbers
+     */
+    public LucasNumber(int id, LucasNumber [] sequence) {
         if(id<0 || sequence==null) {
             throw new IllegalArgumentException();
         }
@@ -19,24 +36,35 @@ public class LucasNumber {
         this.id=id;
     }
 
-    //getters
+    /**getter
+     *
+     * @return id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * getter
+     * @return value
+     */
     public int getValue() {
         return value;
     }
 
-    //checking personal task condition: w^2+1==any of first N Lucas numbers
+    /**
+     * checking personal task condition: w^2+1==any of first N Lucas numbers
+     * @return true if there is such a number, else false
+     */
     public boolean doesMeetCondition(){
-        int w=0;
-        while ((pow(w,2)+1)<=value){
-            if((pow(w,2)+1)==value){
-                return true;
-            }
-            w++;
-        }
-        return false;
+        /**
+         * squared value rounded down
+         */
+        int w=(int)floor(sqrt(value));
+
+        if(value==1 || pow(w,2)+1==value)
+            return true;
+        else
+            return false;
     }
 }
